@@ -10,7 +10,8 @@ using Domain;
 namespace Application
 {
     public class BudgetRepository
-    {        
+    {
+        public List<string> budget = new List<string>();
         public int CalculateDisposableIncome(List<int> incomeList, List<int> expensesList)
         {
             int incomeSum = incomeList.Sum();
