@@ -14,7 +14,6 @@ namespace UI
             int spaces = length - source.Length;
             int padLeft = spaces / 2 + source.Length;
             return source.PadLeft(padLeft).PadRight(length);
-
         }
     }
 

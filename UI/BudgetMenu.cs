@@ -8,7 +8,7 @@ namespace UI
 {
     public class BudgetMenu
     {
-        public void BudgetMenu()
+        public void Menu()
         {
             Template budget = new Template();
             bool menuType = true;
