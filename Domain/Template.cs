@@ -48,11 +48,14 @@ namespace Domain
             }
         }
 
-        public void CalculateBudget()
+        public string CalculateBudget(double income, double expenses)
         {
             BudgetRepository budgetRepo = new BudgetRepository();
+
             double calculatedBudget = budgetRepo.CalculateDisposableIncome(Income, Expenses);
-            Console.WriteLine("\nDit rådighedsbeløb er: " + calculatedBudget);
+
+            return "\nDit rådighedsbeløb er: " + calculatedBudget;
+            //Console.WriteLine("\nDit rådighedsbeløb er: " + calculatedBudget);
         }
 
         public void SaveBudget()
