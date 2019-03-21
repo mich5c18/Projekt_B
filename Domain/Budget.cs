@@ -9,30 +9,32 @@ namespace Domain
 {
     public class Budget : IPublisher
     {
+        private List<ISubscriber> observers = new List<ISubscriber>();
+
         private double _sU;
         public double SU {
             get { return _sU; }
-            set { _sU = value; }
+            set { _sU = value; NotifySubscribers("SU"); }
         }
 
         private double _løn;
         public double Løn {
             get { return _løn; }
-            set { _løn = value; }
+            set { _løn = value; NotifySubscribers("Løn"); }
         }
 
         private double _boligstøtte;
         public double Boligstøtte 
         {
             get { return _boligstøtte; }
-            set { _boligstøtte = value;  }
+            set { _boligstøtte = value; NotifySubscribers("Boligstøtte"); }
         }
 
         private double _stipendier;
         public double Stipendier 
         {
             get { return _stipendier; }
-            set { _stipendier = value; }
+            set { _stipendier = value; NotifySubscribers("Stipendier"); }
         }
 
         public Budget(double su, double løn, double boligstøtte, double stipendier)
