@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Service;
 
 namespace Domain
 {
-    public class Budget
+    public class Budget : IPublisher
     {
         private double _sU;
         public double SU {
@@ -34,12 +35,30 @@ namespace Domain
             set { _stipendier = value; }
         }
 
-        public Budget(double su, double løn, double boligstøtte, double stipendier, string weight)
+        public Budget(double su, double løn, double boligstøtte, double stipendier)
         {
             SU = su;
             Løn = løn;
             Boligstøtte = boligstøtte;
             Stipendier = stipendier;
+        }
+
+        public void RegisterSubscriber(ISubscriber o)
+        {
+            observers.Add(o);
+        }
+
+        public void RemoveSubscriber(ISubscriber o)
+        {
+            observers.Remove(o);
+        }
+
+        public void NotifySubscribers(string message)
+        {
+            foreach (ISubscriber o in observers)
+            {
+                o.Update(this, message);
+            }
         }
     }
 }
